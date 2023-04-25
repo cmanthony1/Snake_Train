@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3008852615463941737}
   - component: {fileID: 3008852615463941736}
   m_Layer: 0
-  m_Name: Enemy Health Bar
+  m_Name: EnemyHealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -246,7 +246,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3008852616327752283}
-  - component: {fileID: 3008852616327752282}
   - component: {fileID: 3008852616327752284}
   - component: {fileID: 3008852616327752285}
   - component: {fileID: 3008852616327752287}
@@ -275,19 +274,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3008852616327752282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3008852616327752281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a04b88bc3832ea44c8f0bded45e9ab7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: 0634d12fae24df5439c967448ffba946, type: 2}
 --- !u!70 &3008852616327752284
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -457,7 +443,7 @@ GameObject:
   - component: {fileID: 3008852616806361971}
   - component: {fileID: 3008852616806361968}
   m_Layer: 0
-  m_Name: Damage Fill
+  m_Name: DamageFill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

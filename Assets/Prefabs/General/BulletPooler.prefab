@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4696301865899875423}
   - component: {fileID: 4696301865899875424}
   m_Layer: 0
-  m_Name: Bullet Pooler
+  m_Name: BulletPooler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

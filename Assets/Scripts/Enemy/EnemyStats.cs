@@ -19,7 +19,7 @@ public class EnemyStats : MonoBehaviour, IDamageable
     private void Awake()
     {
         health = enemyData.maxHealth;
-        enemyHealthBarObj = transform.Find("Canvas/Enemy Health Bar").gameObject;
+        enemyHealthBarObj = transform.Find("Canvas/EnemyHealthBar").gameObject;
         enemyHealthBar = enemyHealthBarObj.GetComponent<EnemyHealthBar>();
         textOriginTransform = transform.Find("FloatingTextOrigin").GetComponent<Transform>();
 

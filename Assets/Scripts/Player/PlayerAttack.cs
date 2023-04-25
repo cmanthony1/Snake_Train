@@ -2,14 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
 
 public class PlayerAttack : MonoBehaviour
 {
-    [Header("Input Referenece Data")]
-    [SerializeField] private InputActionReference attackInput;
-
     [Header("Weapon Data")]
     [SerializeField] private WeaponData revolverData;
     [SerializeField] private Transform leftFirePoint;
@@ -17,34 +13,16 @@ public class PlayerAttack : MonoBehaviour
 
     private (Transform, Transform) firePoint;
     private bool canFire = true;
-    private bool isTriggerDown = false;
     private bool fireFromLeft = true;
-
-    /*
-     * Subscription to Input Event. 
-     * When the "Attack" input is performed (GetkeyDown), invoke Fire().
-     */
-    private void OnEnable()
-    {
-        attackInput.action.performed += TriggerDown;
-        attackInput.action.canceled += TriggerUp;
-    }
 
     private void Start()
     {
         firePoint = (leftFirePoint, rightFirePoint);
     }
 
-    /* Unsubscribes from Input Event (if object is destroyed). */
-    private void OnDisable()
-    {
-        attackInput.action.performed -= TriggerDown;
-        attackInput.action.canceled -= TriggerUp;
-    }
-
     private void Update()
     {
-        if (isTriggerDown)
+        if (Input.GetMouseButton(0))
         {
             Fire();
         }
@@ -84,16 +62,6 @@ public class PlayerAttack : MonoBehaviour
                 return;
             }
         }
-    }
-
-    private void TriggerDown(InputAction.CallbackContext context)
-    {
-        isTriggerDown = true;
-    }
-
-    private void TriggerUp(InputAction.CallbackContext context)
-    {
-        isTriggerDown = false;
     }
 
     private IEnumerator FireTimer()

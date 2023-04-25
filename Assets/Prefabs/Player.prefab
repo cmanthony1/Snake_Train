@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4770749176915860419}
   m_Layer: 0
-  m_Name: Left Fire Point
+  m_Name: FirePointLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 4770749177609746713}
   - component: {fileID: 4770749177609746718}
   m_Layer: 0
-  m_Name: Right Weapon
+  m_Name: WeaponRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -413,7 +413,7 @@ GameObject:
   - component: {fileID: 4770749177879987386}
   - component: {fileID: 4770749177879987387}
   m_Layer: 0
-  m_Name: Left Weapon
+  m_Name: WeaponLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -496,7 +496,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4770749178614702066}
   m_Layer: 0
-  m_Name: Right Fire Point
+  m_Name: FirePointRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

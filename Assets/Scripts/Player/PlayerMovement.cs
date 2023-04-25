@@ -2,14 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Input System Reference")]
-    [SerializeField] private InputActionReference movementInput;
-    [SerializeField] private InputActionReference pointerPosInput;
-
     [Header("Core Player Data")]
     [SerializeField] private AgentData playerData;
     [SerializeField] private Rigidbody2D playerRigidBody;
@@ -43,10 +38,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void ProcessInputs()
     {
-        movement = movementInput.action.ReadValue<Vector2>();
+        movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
         /* Converts to the mouse position to a world point position in the scene. */
-        mousePosition = sceneCamera.ScreenToWorldPoint(pointerPosInput.action.ReadValue<Vector2>());
+        mousePosition = sceneCamera.ScreenToWorldPoint(Input.mousePosition);
     }
 
     private void Move()
@@ -56,10 +51,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void AimWeapon()
     {
-        /* Converts to the mouse position to a world point position in the scene. */
-        mousePosition = sceneCamera.ScreenToWorldPoint(pointerPosInput.action.ReadValue<Vector2>());
-
-        /* Gets the direction of the where the mouse is (left or right). */
         Vector2 aimDirection = (mousePosition - (Vector2)transform.position).normalized;
 
         /* Calculates the angle between two points. */
