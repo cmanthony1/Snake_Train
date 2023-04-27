@@ -9,11 +9,12 @@ public class goldPickup : MonoBehaviour
     //on contact with player, add gold to inventory and either set active or destroy self
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("player hit?");
+        //Debug.Log("player hit?");
         if (other.gameObject.CompareTag("Player"))
         {
             other.gameObject.GetComponent<PlayerInventory>().gold++;
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 }
