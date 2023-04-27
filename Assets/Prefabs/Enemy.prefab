@@ -344,8 +344,8 @@ MonoBehaviour:
   evaluateIdEveryBark: 0
   forcedHideDelay: 0
   queueBarks: 1
-  minDelayBetweenQueuedBarks: 0.75
-  maxDelayBetweenQueuedBarks: 5
+  minDelayBetweenQueuedBarks: 3
+  maxDelayBetweenQueuedBarks: 20
   hideBarkOnConversationStart: 1
 --- !u!114 &3516266777721127038
 MonoBehaviour:
@@ -369,7 +369,7 @@ MonoBehaviour:
     acceptedGameObjects: []
     luaWizardIndex: -1
     lastEvaluationValue: 0
-  skipIfNoValidEntries: 0
+  skipIfNoValidEntries: 1
   exclusive: 0
   conversant: {fileID: 3008852616327752283}
   useConversationTitlePicker: 1
@@ -378,7 +378,7 @@ MonoBehaviour:
   allowDuringConversations: 0
   cacheBarkLines: 1
   minSeconds: 5
-  maxSeconds: 30
+  maxSeconds: 45
   target: {fileID: 0}
 --- !u!114 &6587588754039561695
 MonoBehaviour:
@@ -685,6 +685,7 @@ GameObject:
   - component: {fileID: 3341667772957889523}
   - component: {fileID: 2784498742284815303}
   - component: {fileID: 6979944335494510238}
+  - component: {fileID: 3453892937262613529}
   m_Layer: 0
   m_Name: BarkText
   m_TagString: Untagged
@@ -742,8 +743,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2fad0ca44cec205489f78ea1f544f130, type: 2}
+  m_sharedMaterial: {fileID: 1733489279221092261, guid: 2fad0ca44cec205489f78ea1f544f130, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -767,10 +768,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.2
-  m_fontSizeBase: 0.2
+  m_fontSize: 0.3
+  m_fontSizeBase: 0.3
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 0.03
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -837,7 +838,7 @@ MonoBehaviour:
     hideTrigger: Hide
   duration: 0
   keepInView: 0
-  waitUntilSequenceEnds: 0
+  waitUntilSequenceEnds: 1
   cancelWaitUntilSequenceEndsIfReplacingBark: 0
   waitForContinueButton: 0
   textDisplaySetting: 0
@@ -869,7 +870,7 @@ MonoBehaviour:
   quarterPauseDuration: 0.25
   removeDuplicateTypewriterEffects: 1
   playOnEnable: 0
-  waitOneFrameBeforeStarting: 1
+  waitOneFrameBeforeStarting: 0
   stopOnConversationEnd: 1
   autoScrollSettings:
     autoScrollEnabled: 0
@@ -884,3 +885,24 @@ MonoBehaviour:
   onEnd:
     m_PersistentCalls:
       m_Calls: []
+--- !u!95 &3453892937262613529
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3548920342626553476}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3f6d994059f59044f94f74124bfb3f37, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
