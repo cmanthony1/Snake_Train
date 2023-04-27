@@ -253,6 +253,7 @@ GameObject:
   - component: {fileID: 1538351261749847581}
   - component: {fileID: 3516266777721127038}
   - component: {fileID: 6587588754039561695}
+  - component: {fileID: 7199606536482269947}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -413,6 +414,19 @@ MonoBehaviour:
     prependActorNameSeparator: ': '
     prependActorNameFormat: '{0}{1}'
     subtitleColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &7199606536482269947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3008852616327752281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 784f9982863f34c0289958030e4a156d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinsDropped: 3
 --- !u!1 &3008852616432645807
 GameObject:
   m_ObjectHideFlags: 0

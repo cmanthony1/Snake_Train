@@ -17,7 +17,7 @@ public class EnemyDrops : MonoBehaviour
         {
             GameObject place = Instantiate(thePrefab);
             Vector2 pos = Random.insideUnitCircle * 1;
-            place.transform.position = new Vector3(gameObject.transform.position.x + pos.x,gameObject.transform.position.y + pos.y,1f);
+            place.transform.position = new Vector3(gameObject.transform.position.x + pos.x,gameObject.transform.position.y + (pos.y/2),1f);
         }
     }
 
