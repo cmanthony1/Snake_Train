@@ -189,7 +189,7 @@ MonoBehaviour:
   allowBarksDuringConversations: 0
   skipBarkIfNoValidEntries: 0
   cacheBarkLines: 0
-  conversation: TestConvo
+  conversation: Intro/Intro Convo
   conversationConversant: {fileID: 0}
   conversationActor: {fileID: 0}
   startConversationEntryID: -1
@@ -213,7 +213,7 @@ MonoBehaviour:
   useConversationTitlePicker: 1
   useBarkTitlePicker: 1
   useQuestNamePicker: 1
-  selectedDatabase: {fileID: 11400000, guid: 6a692937b2d873b48b8c0d2c53c1d1c6, type: 2}
+  selectedDatabase: {fileID: 11400000, guid: 5ac2a2cd529b2ba4db26aaafc7414f70, type: 2}
 --- !u!4 &82104601
 Transform:
   m_ObjectHideFlags: 0
@@ -227,7 +227,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &82104602
 MonoBehaviour:
@@ -452,19 +452,7 @@ MonoBehaviour:
           m_CallState: 2
     onConversationEnd:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 7944953581939537170}
-          m_TargetAssemblyTypeName: 
-          m_MethodName: 
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
     runOnConversationEndEventsAtEndOfFrame: 0
     onConversationCancelled:
       m_PersistentCalls:
@@ -590,7 +578,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &671755964
 GameObject:
@@ -979,7 +967,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 425660, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 425660, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1036,7 +1024,7 @@ PrefabInstance:
     - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: initialDatabase
       value: 
-      objectReference: {fileID: 11400000, guid: 6a692937b2d873b48b8c0d2c53c1d1c6, type: 2}
+      objectReference: {fileID: 11400000, guid: 5ac2a2cd529b2ba4db26aaafc7414f70, type: 2}
     - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: preloadResources
       value: 0
@@ -1058,6 +1046,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
+      propertyPath: displaySettings.barkSettings.minBarkSeconds
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: displaySettings.cameraSettings.defaultSequence
       value: Delay(1)@Message(Typed)
       objectReference: {fileID: 0}
@@ -1072,6 +1064,10 @@ PrefabInstance:
     - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: displaySettings.subtitleSettings.subtitleCharsPerSecond
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
+      propertyPath: displaySettings.barkSettings.allowBarksDuringConversations
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11426072, guid: 58ac37417e60e534f91138088a3e6f70, type: 3}
       propertyPath: displaySettings.subtitleSettings.showPCSubtitlesDuringLine
@@ -1217,7 +1213,7 @@ MonoBehaviour:
   usePortraitNativeSize: 0
   waitForOpen: 0
   waitForClose: 0
-  clearTextOnClose: 1
+  clearTextOnClose: 0
   clearTextOnConversationStart: 1
   scrollbarEnabler: {fileID: 0}
   onFocus:
@@ -1262,6 +1258,63 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!1001 &1493271530
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3008852616327752281, guid: 72444703956a5284991e092c20e748c3, type: 3}
+      propertyPath: m_Name
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3008852616327752283, guid: 72444703956a5284991e092c20e748c3, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3008852616327752283, guid: 72444703956a5284991e092c20e748c3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.6210704
+      objectReference: {fileID: 0}
+    - target: {fileID: 3008852616327752283, guid: 72444703956a5284991e092c20e748c3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5954988
+      objectReference: {fileID: 0}
+    - target: {fileID: 3008852616327752283, guid: 72444703956a5284991e092c20e748c3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3008852616327752283, guid: 72444703956a5284991e092c20e748c3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3008852616327752283, guid: 72444703956a5284991e092c20e748c3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3008852616327752283, guid: 72444703956a5284991e092c20e748c3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3008852616327752283, guid: 72444703956a5284991e092c20e748c3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3008852616327752283, guid: 72444703956a5284991e092c20e748c3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3008852616327752283, guid: 72444703956a5284991e092c20e748c3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3008852616327752283, guid: 72444703956a5284991e092c20e748c3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 72444703956a5284991e092c20e748c3, type: 3}
 --- !u!1 &7944953580786481379
 GameObject:
   m_ObjectHideFlags: 0
@@ -1837,7 +1890,7 @@ MonoBehaviour:
   usePortraitNativeSize: 0
   waitForOpen: 0
   waitForClose: 0
-  clearTextOnClose: 1
+  clearTextOnClose: 0
   clearTextOnConversationStart: 1
   scrollbarEnabler: {fileID: 0}
   onFocus:
