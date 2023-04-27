@@ -250,6 +250,7 @@ GameObject:
   - component: {fileID: 3008852616327752284}
   - component: {fileID: 3008852616327752285}
   - component: {fileID: 3008852616327752287}
+  - component: {fileID: -5923652482805225659}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -338,6 +339,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 0634d12fae24df5439c967448ffba946, type: 2}
+--- !u!114 &-5923652482805225659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3008852616327752281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ce030b051f749fcbbfe61c481ae57e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinsDropped: 3
 --- !u!1 &3008852616432645807
 GameObject:
   m_ObjectHideFlags: 0

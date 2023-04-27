@@ -1358,6 +1358,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1148577302024185973, guid: 29300f01b0afb514db12a914449215c7, type: 3}
+      propertyPath: gold
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148577302024185973, guid: 29300f01b0afb514db12a914449215c7, type: 3}
+      propertyPath: coinPrefab
+      value: 
+      objectReference: {fileID: 8998374238407635261, guid: 9d226442d395f43f78f645d516390d91, type: 3}
     - target: {fileID: 4770749177685651562, guid: 29300f01b0afb514db12a914449215c7, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1412,21 +1420,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29300f01b0afb514db12a914449215c7, type: 3}
---- !u!1 &4770749178343020571 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4770749177685651562, guid: 29300f01b0afb514db12a914449215c7, type: 3}
-  m_PrefabInstance: {fileID: 4770749178343020570}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4770749178343020572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4770749178343020571}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68468e10ff2e04737a33472ae60fb8a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gold: 0
