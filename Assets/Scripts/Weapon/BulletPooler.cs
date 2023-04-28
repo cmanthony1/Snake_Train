@@ -17,6 +17,7 @@ public class BulletPooler : MonoBehaviour
 
     [Header("Weapon Data")]
     [SerializeField] private WeaponData weaponData;
+    [SerializeField] private float pooledSize;
     [SerializeField] private bool willGrow;
 
     private List<GameObject> pooledObjects;
@@ -27,9 +28,10 @@ public class BulletPooler : MonoBehaviour
         pooledObjects = new List<GameObject>();
 
         /* Creates objects and adds to pooledObjects list. */
-        for (int i = 0; i < weaponData.capacity; i++)
+        for (int i = 0; i < pooledSize; i++)
         {
-            GameObject obj = Instantiate(weaponData.projectile);
+            GameObject obj = Instantiate(weaponData.Prefab);
+            obj.hideFlags = HideFlags.HideInHierarchy;
             obj.SetActive(false);
             pooledObjects.Add(obj);
         }
@@ -49,7 +51,7 @@ public class BulletPooler : MonoBehaviour
         /* Option to have unlimited amount of pooled objects. */
         if (willGrow)
         {
-            GameObject obj = Instantiate(weaponData.projectile);
+            GameObject obj = Instantiate(weaponData.Prefab);
             pooledObjects.Add(obj);
             return obj;
         }

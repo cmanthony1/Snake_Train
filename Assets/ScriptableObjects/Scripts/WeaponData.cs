@@ -5,10 +5,10 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Weapon")]
 public class WeaponData : ScriptableObject
 {
-    public GameObject projectile;
-    public float maxDamage;
-    public float minDamage;
-    public float fireForce;
-    public float fireRate;
-    public float capacity;
+    public GameObject Prefab;
+    public float MaxDamage;
+    public float MinDamage;
+    public float FireForce;
+    public float FireRate;
+    public float Capacity;
 }

@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Weapon Data")]
     [SerializeField] private Camera sceneCamera;
     [SerializeField] private Transform weaponTransform;
-    
+
     private Vector2 movement;
     private Vector2 mousePosition;
     private float speed;
@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        speed = playerData.moveSpeed;
+        speed = playerData.MoveSpeed;
         yWeaponScale = weaponTransform.localScale.y;
     }
 

@@ -9,6 +9,6 @@ public class EnemyHealthBar : Healthbar
     private void Awake()
     {
         fill = transform.Find("Fill").GetComponent<Image>();
-        damageFill = transform.Find("DamageFill").GetComponent<Image>();
+        damageFill = transform.Find("FillDamage").GetComponent<Image>();
     }
 }

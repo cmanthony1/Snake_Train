@@ -9,12 +9,12 @@ public class PlayerHealthBar : Healthbar
     private void Awake()
     {
         fill = transform.Find("Fill").GetComponent<Image>();
-        damageFill = transform.Find("DamageFill").GetComponent<Image>();
+        damageFill = transform.Find("FillDamage").GetComponent<Image>();
     }
 
     /*
-     * Subscribes to the "DamagePlayer" event in the "PlayerStats" script.
-     * Subscribes to the "HealPlayer" event in the "PlayerStats" script.
+     * Subscribes to the DamagePlayer event in the PlayerStats script.
+     * Subscribes to the HealPlayer event in the PlayerStats script.
      * Invokes: Healthbar -> ShowDamage().
      * Invokes: Healthbar -> ShowHeal().
      */
@@ -25,8 +25,8 @@ public class PlayerHealthBar : Healthbar
     }
 
     /*
-     * Unsubscribes from the "DamagePlayer" event in the "PlayerStats" script (if destroyed).
-     * Unsubscribes from the "HealPlayer" event in the "PlayerStats" script (if destroyed).
+     * Unsubscribes from the DamagePlayer event in the PlayerStats script (if destroyed).
+     * Unsubscribes from the HealPlayer event in the PlayerStats script (if destroyed).
      */
     private void OnDisable()
     {

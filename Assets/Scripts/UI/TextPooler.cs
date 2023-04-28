@@ -31,6 +31,7 @@ public class TextPooler : MonoBehaviour
         for (int i = 0; i < pooledSize; i++)
         {
             GameObject obj = Instantiate(textObject);
+            obj.hideFlags = HideFlags.HideInHierarchy;
             obj.SetActive(false);
             pooledObjects.Add(obj);
         }

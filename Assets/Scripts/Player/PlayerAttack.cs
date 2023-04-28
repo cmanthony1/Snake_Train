@@ -51,8 +51,8 @@ public class PlayerAttack : MonoBehaviour
                     projectile.transform.rotation = firePoint.Item2.transform.rotation;
                 }
 
-                projectile.GetComponent<BulletController>().FireForce = revolverData.fireForce;
-                int randomDamage = Mathf.FloorToInt(Random.Range(revolverData.minDamage, revolverData.maxDamage));
+                projectile.GetComponent<BulletController>().FireForce = revolverData.FireForce;
+                int randomDamage = Mathf.FloorToInt(Random.Range(revolverData.MinDamage, revolverData.MaxDamage));
                 projectile.GetComponent<BulletController>().BulletDamage = randomDamage;
                 projectile.SetActive(true);
                 StartCoroutine(FireTimer());
@@ -67,7 +67,7 @@ public class PlayerAttack : MonoBehaviour
     private IEnumerator FireTimer()
     {
         canFire = false;
-        yield return new WaitForSeconds(revolverData.fireRate);
+        yield return new WaitForSeconds(revolverData.FireRate);
         fireFromLeft = !fireFromLeft;
         canFire = true;
     }

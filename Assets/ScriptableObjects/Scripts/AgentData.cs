@@ -5,8 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Agent")]
 public class AgentData : ScriptableObject
 {
-    public float maxHealth;
-    public float attack;
+    public float MaxHealth;
+    public float Attack;
     [Header("Mutiplied by 100")]
-    public float moveSpeed;
+    public float MoveSpeed;
 }
