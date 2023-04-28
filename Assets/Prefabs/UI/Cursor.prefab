@@ -45,7 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e772f7535ac045940a60263492ea053a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointerPosInput: {fileID: -2199973238681521889, guid: 62069f1a174fd6042b02094fc0839ef3, type: 3}
   sceneCamera: {fileID: 0}
 --- !u!1 &1988755640106443485
 GameObject:
@@ -58,7 +57,7 @@ GameObject:
   - component: {fileID: 1988755640106443490}
   - component: {fileID: 1988755640106443491}
   m_Layer: 0
-  m_Name: Sprite
+  m_Name: SpriteCursor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

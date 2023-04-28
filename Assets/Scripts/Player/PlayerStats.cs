@@ -17,7 +17,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
 
     private void Start()
     {
-        health = playerData.maxHealth;
+        health = playerData.MaxHealth;
         textOriginTransform = transform.Find("FloatingTextOrigin").GetComponent<Transform>();
     }
 
@@ -34,12 +34,12 @@ public class PlayerStats : MonoBehaviour, IDamageable
     {
         health += value;
 
-        if (health > playerData.maxHealth)
+        if (health > playerData.MaxHealth)
         {
-            health = playerData.maxHealth;
+            health = playerData.MaxHealth;
         }
 
-        float adjustedHealth = (health / playerData.maxHealth);
+        float adjustedHealth = (health / playerData.MaxHealth);
 
         /*
          * Calls all functions subscribed to this event.
@@ -52,7 +52,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
     public void TakeDamage(float value)
     {
         health -= value;
-        float adjustedHealth = (health / playerData.maxHealth);
+        float adjustedHealth = (health / playerData.MaxHealth);
 
         ShowValue(value);
 

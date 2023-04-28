@@ -10,6 +10,9 @@ public class EnemyStats : MonoBehaviour, IDamageable
     [Header("Agent Data")]
     [SerializeField] private AgentData enemyData;
 
+    public static Action OnCreate;
+    public static Action OnDestroy;
+
     private GameObject enemyHealthBarObj;
     private EnemyHealthBar enemyHealthBar;
     private float health;
@@ -18,12 +21,17 @@ public class EnemyStats : MonoBehaviour, IDamageable
     /* Finds the child with the specified name of the object this script is attached to. */
     private void Awake()
     {
-        health = enemyData.maxHealth;
-        enemyHealthBarObj = transform.Find("Canvas/EnemyHealthBar").gameObject;
+        health = enemyData.MaxHealth;
+        enemyHealthBarObj = transform.Find("Canvas/HealthBarEnemy").gameObject;
         enemyHealthBar = enemyHealthBarObj.GetComponent<EnemyHealthBar>();
         textOriginTransform = transform.Find("FloatingTextOrigin").GetComponent<Transform>();
-
         enemyHealthBarObj.SetActive(false);
+
+        /*
+        * Calls all functions subscribed to this event.
+        * Subscription: EnemyHandler.
+        */
+        OnCreate?.Invoke();
     }
 
     //Subtracts the damage from health and calls a function that sends the remaining health to its own UI element.
@@ -32,24 +40,29 @@ public class EnemyStats : MonoBehaviour, IDamageable
         health -= value;
 
         /* Checks if the health is over the max health of the agent. */
-        if (health > enemyData.maxHealth)
+        if (health > enemyData.MaxHealth)
         {
-            health = enemyData.maxHealth;
+            health = enemyData.MaxHealth;
         }
 
         /* Sets the enemy health bar to active once it recieves damage. */
-        if (health != enemyData.maxHealth)
+        if (health != enemyData.MaxHealth)
         {
             enemyHealthBarObj.SetActive(true);
         }
 
         ShowValue(value);
 
-        float adjustedHealth = (health / enemyData.maxHealth);
+        float adjustedHealth = (health / enemyData.MaxHealth);
         enemyHealthBar.ShowDamage(adjustedHealth);
 
         if (health <= 0)
         {
+            /*
+             * Calls all functions subscribed to this event.
+             * Subscription: EnemyHandler.
+             */
+            OnDestroy?.Invoke();
             Destroy(gameObject);
         }
     }

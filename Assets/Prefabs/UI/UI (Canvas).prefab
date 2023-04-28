@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 3201154767520222518}
   - component: {fileID: 3201154767520222519}
   m_Layer: 5
-  m_Name: DamageFill
+  m_Name: FillDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -340,7 +340,7 @@ GameObject:
   - component: {fileID: 3201154767647080161}
   - component: {fileID: 3201154767647080160}
   m_Layer: 5
-  m_Name: PlayerHealthBar
+  m_Name: HealthBarPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
