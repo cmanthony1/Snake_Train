@@ -29,12 +29,14 @@ public class PlayerInteract : MonoBehaviour
         }
     }
 
+    /* Plays prompt animation and enables player to interact. */
     public void Prompt(bool value)
     {
         promptAnimator.SetBool("Prompt", value);
         canInteract = promptAnimator.GetBool("Prompt");
     }
 
+    /* Gets the Prompt Object active state and sets active state. */
     public bool PromptState
     {
         get { return promptObj.activeInHierarchy; }

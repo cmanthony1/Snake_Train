@@ -64,6 +64,7 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    /* Fire Rate Control. */
     private IEnumerator FireTimer()
     {
         canFire = false;
