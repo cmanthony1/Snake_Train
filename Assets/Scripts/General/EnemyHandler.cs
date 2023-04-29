@@ -36,7 +36,7 @@ public class EnemyHandler : MonoBehaviour
         {
             /*
              * Calls all functions subscribed to this event.
-             * Subscription: PromptTransition, SceneLoader.
+             * Subscription: PromptTransition, SceneLoader, ConversationStarter.
              */
             OnEnemiesDefeated?.Invoke();
         }

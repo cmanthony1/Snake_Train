@@ -11,6 +11,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
 
     public static Action<float> OnDamagePlayer;
     public static Action<float> OnHealPlayer;
+    public static Action OnDeathPlayer;
 
     private float health;
     private Transform textOriginTransform;
@@ -58,12 +59,17 @@ public class PlayerStats : MonoBehaviour, IDamageable
 
         /*
          * Calls all functions subscribed to this event.
-         * Subscription: PlayerHealthBar.
+         * Subscription: PlayerHealthBar, ConversationStarter.
          */
         OnDamagePlayer?.Invoke(adjustedHealth);
 
         if (health <= 0)
         {
+            /*
+             * Calls death function when health is 0.
+             * Subscription: ConversationStarter.
+             */
+            OnDeathPlayer.Invoke();
             Destroy(gameObject);
         }
     }
