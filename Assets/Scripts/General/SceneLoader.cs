@@ -66,6 +66,7 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    /* Getter/Setter. */
     public bool CanLoad
     {
         get { return canLoad; }

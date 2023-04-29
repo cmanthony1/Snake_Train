@@ -42,6 +42,7 @@ public class BulletController : MonoBehaviour
         CancelInvoke();
     }
 
+    /* Disables object depending on what it collides with. */
     public void OnTriggerEnter2D(Collider2D collision)
     {
         switch (collision.gameObject.tag)

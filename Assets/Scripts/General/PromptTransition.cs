@@ -29,6 +29,7 @@ public class PromptTransition : MonoBehaviour
         EnemyHandler.OnEnemiesDefeated -= Open;
     }
 
+    /* Enables prompt and sends data to enable interaction. */
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -39,6 +40,7 @@ public class PromptTransition : MonoBehaviour
         }
     }
 
+    /* Disables prompt and sends data to enable interaction. */
     public void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -49,13 +51,14 @@ public class PromptTransition : MonoBehaviour
         }
     }
 
+    /* Enables player to interact with transition and sets color of the Arrow Sprite to green. */
     private void Open()
     {
         canOpen = true;
         arrowSprend.color = ColorUtility.TryParseHtmlString("#00A619", out Color color) ? color : arrowSprend.color;
     }
 
-    //Gizmos
+    /* Gizmos for visibility. */
     public void OnDrawGizmos()
     {
         BoxCollider2D collider = gameObject.GetComponent<BoxCollider2D>();

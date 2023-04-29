@@ -9,4 +9,6 @@ public class AgentData : ScriptableObject
     public float Attack;
     [Header("Mutiplied by 100")]
     public float MoveSpeed;
+    public float DashForce;
+    public float DashCooldown;
 }
