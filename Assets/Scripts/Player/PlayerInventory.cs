@@ -8,7 +8,7 @@ public class PlayerInventory : MonoBehaviour
      * This holds the player's inventory. Currently all that we have in here is gold, but we may later add gun types and/or ammo. 
      * It also holds the gold prefabs, for the moment.
      */
-    [SerializeField] private ItemData coinData;
+    [SerializeField] public ItemData coinData;
     
     void Start()
     {

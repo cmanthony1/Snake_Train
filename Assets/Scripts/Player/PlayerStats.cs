@@ -13,7 +13,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
     public static Action<float> OnHealPlayer;
     public static Action OnDeathPlayer;
 
-    private float health;
+    public float health;
     private Transform textOriginTransform;
 
     private void Start()
