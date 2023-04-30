@@ -331,7 +331,7 @@ MonoBehaviour:
   evaluateIdEveryBark: 0
   forcedHideDelay: 0
   queueBarks: 1
-  minDelayBetweenQueuedBarks: 3
+  minDelayBetweenQueuedBarks: 10
   maxDelayBetweenQueuedBarks: 20
   hideBarkOnConversationStart: 1
 --- !u!114 &3516266777721127038
