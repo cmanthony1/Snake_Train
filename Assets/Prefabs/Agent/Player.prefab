@@ -297,6 +297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 4b6272849df9ea943b154ba99b788ec9, type: 2}
+  health: 0
 --- !u!114 &4770749177685651563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,10 +311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 4b6272849df9ea943b154ba99b788ec9, type: 2}
-  playerRigidBody: {fileID: 4770749177685651560}
-  sprend: {fileID: 4770749177729167823}
   sceneCamera: {fileID: 0}
-  weaponTransform: {fileID: 4770749178642944242}
 --- !u!114 &4770749177685651567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,6 +327,8 @@ MonoBehaviour:
   revolverData: {fileID: 11400000, guid: d25a1c7f7d787dd4ea2776ed4d977d99, type: 2}
   leftFirePoint: {fileID: 4770749176915860419}
   rightFirePoint: {fileID: 4770749178614702066}
+  sceneCamera: {fileID: 0}
+  molotovData: {fileID: 0}
 --- !u!114 &7464675693557360482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,8 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07059adbb25a349a6937de7b24f74297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gold: 0
-  coinPrefab: {fileID: 8233560205117113873, guid: fd3cfc53c56ad4c30968485851aedfec, type: 3}
+  coinData: {fileID: 11400000, guid: 5ee890102f9ae104da83aeda417d4f9e, type: 2}
 --- !u!1 &4770749177729167817
 GameObject:
   m_ObjectHideFlags: 0

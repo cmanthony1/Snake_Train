@@ -8,7 +8,7 @@ public class PromptTransition : MonoBehaviour
     private SpriteRenderer arrowSprend;
     private bool canOpen;
 
-
+    /* Finds the child with the specified name of the object this script is attached to. */
     private void Awake()
     {
         arrowSprend = transform.Find("SpriteArrow").GetComponent<SpriteRenderer>();

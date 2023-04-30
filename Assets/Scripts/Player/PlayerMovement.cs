@@ -5,12 +5,14 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Core Player Data")]
     [SerializeField] private AgentData playerData;
-    [SerializeField] private Rigidbody2D playerRigidBody;
-    [SerializeField] private Transform playerSpriteTransform;
-
-    [Header("Weapon Data")]
     [SerializeField] private Camera sceneCamera;
-    [SerializeField] private Transform weaponTransform;
+
+    /* Core Player Data */
+    private Rigidbody2D playerRigidBody;
+    private Transform playerSpriteTransform;
+
+    /* Weapon Data */
+    private Transform weaponTransform;
 
     /* Movement Data */
     private Vector2 movement;
@@ -23,6 +25,14 @@ public class PlayerMovement : MonoBehaviour
     private bool canDash = true;
     private bool isDashing;
     private float dashingTime = 0.2f;
+
+    /* Finds the child with the specified name of the object this script is attached to. */
+    private void Awake()
+    {
+        playerRigidBody = gameObject.GetComponent<Rigidbody2D>();
+        playerSpriteTransform = transform.Find("SpritePlayer").GetComponent<Transform>();
+        weaponTransform = transform.Find("Revolver (Pivot)").GetComponent<Transform>();
+    }
 
     private void Start()
     {
@@ -84,7 +94,7 @@ public class PlayerMovement : MonoBehaviour
             playerSpriteTransform.localScale = new Vector3(-xPlayerScale, playerSpriteTransform.localScale.y, playerSpriteTransform.localScale.z);
             weaponTransform.localScale = new Vector3(weaponTransform.localScale.x, -yWeaponScale, weaponTransform.localScale.z);
         }
-        else if (aimDirection.x >= 0)
+        else
         {
             playerSpriteTransform.localScale = new Vector3(xPlayerScale, playerSpriteTransform.localScale.y, playerSpriteTransform.localScale.z);
             weaponTransform.localScale = new Vector3(weaponTransform.localScale.x, yWeaponScale, weaponTransform.localScale.z);

@@ -45,12 +45,12 @@ public class ShopController : MonoBehaviour
     public void UpdateMenu()
     {
         //update shop option availability
-        if (inv.coinData.Quantity < 15 || stats.health>=100)//Not sure how to access max health, but that's the second check
+        if (inv.Coins < 15 || stats.health>=100)//Not sure how to access max health, but that's the second check
         {
             increaseButton.interactable = false;
             increaseButton.GetComponent<Image>().color = Color.grey;
 
-        } else if (inv.coinData.Quantity < 30)// ADD OR FROM PLAYER MAXHEALTH == CAP
+        } else if (inv.Coins < 30)// ADD OR FROM PLAYER MAXHEALTH == CAP
         {
             restoreButton.interactable = false;
             increaseButton.interactable = false;
@@ -59,7 +59,7 @@ public class ShopController : MonoBehaviour
         }
 
         //update information displayed
-        moneyDisplay.text = "Money: " + inv.coinData.Quantity.ToString();
+        moneyDisplay.text = "Money: " + inv.Coins.ToString();
 
         //ADD UPDATE BASED ON PLAYER HEALTH
     }

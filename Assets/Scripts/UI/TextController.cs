@@ -14,7 +14,12 @@ using UnityEngine;
  */
 public class TextController : MonoBehaviour
 {
-    [SerializeField] private Animator textAnimator;
+    private Animator textAnimator;
+
+    private void Awake()
+    {
+        textAnimator = transform.Find("FloatingText").GetComponent<Animator>();
+    }
 
     private void OnEnable()
     {

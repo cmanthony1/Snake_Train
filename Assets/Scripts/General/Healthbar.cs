@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-//Parent Class
+/* Parent Class */
 public class Healthbar : MonoBehaviour
 {
     protected Image fill;

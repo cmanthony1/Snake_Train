@@ -8,14 +8,17 @@ using TMPro;
 public class SceneLoader : MonoBehaviour
 {
     [SerializeField] private SceneData sceneData;
-    [SerializeField] private Animator crossFadeAnimator;
     [SerializeField] private int nextSceneIndex;
 
+    private Animator crossFadeAnimator;
     private float animationDuration;
     private bool canLoad;
 
+    /* Finds the child with the specified name of the object this script is attached to. */
     private void Awake()
     {
+        crossFadeAnimator = transform.Find("CrossFade (Canvas)").GetComponent<Animator>();
+        
         /* Gets the duration of FadeIn duration. Both FadeIn and FadeOut should be the same. */
         animationDuration = crossFadeAnimator.runtimeAnimatorController.animationClips[0].length;
     }

@@ -34,7 +34,7 @@ public class EnemyStats : MonoBehaviour, IDamageable
         OnCreate?.Invoke();
     }
 
-    //Subtracts the damage from health and calls a function that sends the remaining health to its own UI element.
+    /* Subtracts the damage from health and calls a function that sends the remaining health to its own UI element. */
     public void TakeDamage(float value)
     {
         health -= value;
