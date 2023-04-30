@@ -12,7 +12,7 @@ public class CoinPickup : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<PlayerInventory>().AddCoins++;
+            other.gameObject.GetComponent<PlayerInventory>().Coins++;
             Destroy(gameObject);
         }
     }

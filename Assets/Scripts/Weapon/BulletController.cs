@@ -47,6 +47,10 @@ public class BulletController : MonoBehaviour
     {
         switch (collision.gameObject.tag)
         {
+            case "Player":
+                collision.gameObject.GetComponent<PlayerStats>().TakeDamage(_bulletDamage);
+                Disable();
+                break;
             case "Enemy":
                 collision.gameObject.GetComponent<EnemyStats>().TakeDamage(_bulletDamage);
                 Disable();

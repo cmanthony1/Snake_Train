@@ -7,18 +7,12 @@ using Random = UnityEngine.Random;
 public class PlayerAttack : MonoBehaviour
 {
     [Header("Weapon Data")]
-    [SerializeField] private WeaponData revolverData;
+    [SerializeField] private GunData revolverData;
     [SerializeField] private Transform leftFirePoint;
     [SerializeField] private Transform rightFirePoint;
 
-    private (Transform, Transform) firePoint;
     private bool canFire = true;
     private bool fireFromLeft = true;
-
-    private void Start()
-    {
-        firePoint = (leftFirePoint, rightFirePoint);
-    }
 
     private void Update()
     {
@@ -42,13 +36,13 @@ public class PlayerAttack : MonoBehaviour
             {
                 if (fireFromLeft)
                 {
-                    projectile.transform.position = firePoint.Item1.transform.position;
-                    projectile.transform.rotation = firePoint.Item1.transform.rotation;
+                    projectile.transform.position = leftFirePoint.transform.position;
+                    projectile.transform.rotation = leftFirePoint.transform.rotation;
                 }
                 else
                 {
-                    projectile.transform.position = firePoint.Item2.transform.position;
-                    projectile.transform.rotation = firePoint.Item2.transform.rotation;
+                    projectile.transform.position = rightFirePoint.transform.position;
+                    projectile.transform.rotation = rightFirePoint.transform.rotation;
                 }
 
                 projectile.GetComponent<BulletController>().FireForce = revolverData.FireForce;

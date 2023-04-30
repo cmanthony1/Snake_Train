@@ -8,15 +8,18 @@ using TMPro;
 public class LoadingBar : MonoBehaviour
 {
     [SerializeField] private SceneData sceneData;
-    [SerializeField] private Slider loadingBar;
-    [SerializeField] private TMP_Text progressLabel;
 
+    private Slider loadingBar;
+    private TMP_Text progressLabel;
     private bool canLoad = true;
     private float timerMax = 0.01f;
     private float timer;
 
     private void Awake()
     {
+        loadingBar = transform.Find("LoadSlider").GetComponent<Slider>();
+        progressLabel = transform.Find("ProgressLabel").GetComponent<TMP_Text>();
+        
         loadingBar.value = 0;
     }
 
