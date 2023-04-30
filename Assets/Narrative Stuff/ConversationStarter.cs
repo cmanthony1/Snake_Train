@@ -20,7 +20,7 @@ public class ConversationStarter : MonoBehaviour
         PlayerStats.OnDamagePlayer += PlayerDamaged;
         PlayerStats.OnDeathPlayer += PlayerDeath;
         DialogueManager.instance.WarmUpConversationController();
-        Invoke("StartConvo", 0.6f);
+        Invoke("StartConvo", 0.9f);
     }
     private void OnDisable()
     {
@@ -46,19 +46,16 @@ public class ConversationStarter : MonoBehaviour
     private void PlayerDamaged(float currentDamage)
     {
         //not currently implemented. Will alter dialogue based on players current HP.
+        return;
     }
     private void PlayerDeath() 
     {
-        int quip = Random.Range(0, 3);
-        DialogueLua.SetVariable("DeathQuip", quip);
-
         playerDeathTrigger.OnUse();
-        //ToDo: Also call whatever method resets the scene.
+        DialogueLua.SetVariable("CombatState.CombatActive", false);
+        //ToDo: Also call whatever method resets the scene, make sure to reset CombatActive for barks.
     }
     private void StartConvo()
     {
-        int taunt = Random.Range(0, 7);
-        DialogueLua.SetVariable("GenericIntro", taunt);
         startTrigger.OnUse();
     }
 }

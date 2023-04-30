@@ -297,6 +297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 4b6272849df9ea943b154ba99b788ec9, type: 2}
+  health: 0
 --- !u!114 &4770749177685651563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,7 +312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 4b6272849df9ea943b154ba99b788ec9, type: 2}
   playerRigidBody: {fileID: 4770749177685651560}
-  sprend: {fileID: 4770749177729167823}
+  playerSpriteTransform: {fileID: 0}
   sceneCamera: {fileID: 0}
   weaponTransform: {fileID: 4770749178642944242}
 --- !u!114 &4770749177685651567
@@ -354,8 +355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07059adbb25a349a6937de7b24f74297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gold: 0
-  coinPrefab: {fileID: 8233560205117113873, guid: fd3cfc53c56ad4c30968485851aedfec, type: 3}
+  coinData: {fileID: 0}
 --- !u!1 &4770749177729167817
 GameObject:
   m_ObjectHideFlags: 0
