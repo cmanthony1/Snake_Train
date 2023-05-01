@@ -16,7 +16,7 @@ public class ConversationStarter : MonoBehaviour
     {
         deathCanvas.SetActive(false);
         player = GameObject.FindGameObjectWithTag("Player");
-        EnemyHandler.OnEnemiesDefeated += EnemyStateReset;
+        //CombatStateManager.OnEnemiesDefeated += EnemyStateReset;
         PlayerStats.OnDamagePlayer += PlayerDamaged;
         PlayerStats.OnDeathPlayer += PlayerDeath;
         DialogueManager.instance.WarmUpConversationController();
@@ -24,7 +24,7 @@ public class ConversationStarter : MonoBehaviour
     }
     private void OnDisable()
     {
-        EnemyHandler.OnEnemiesDefeated -= EnemyStateReset;
+        //CombatStateManager.OnEnemiesDefeated -= EnemyStateReset;
         PlayerStats.OnDamagePlayer -= PlayerDamaged;
         PlayerStats.OnDeathPlayer -= PlayerDeath;
     }

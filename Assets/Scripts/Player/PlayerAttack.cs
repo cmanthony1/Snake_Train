@@ -11,14 +11,38 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private Transform leftFirePoint;
     [SerializeField] private Transform rightFirePoint;
 
+    private int sceneState;
     private bool canFire = true;
     private bool fireFromLeft = true;
 
+    /*
+     * Subscribes to the SendSceneState event in the CombatStateManager script.
+     * Invokes: SceneState().
+     */
+    private void OnEnable()
+    {
+        CombatStateManager.SendSceneState += SceneState;
+    }
+
+    /* Unsubscribes from the SendSceneState event in the CombatStateManager script (if destroyed). */
+    private void OnDisable()
+    {
+        CombatStateManager.SendSceneState += SceneState;
+    }
+
     private void Update()
     {
-        if (Input.GetMouseButton(0))
+        switch (sceneState)
         {
-            Fire();
+            case 1:
+            case 2:
+                
+                if (Input.GetMouseButton(0))
+                {
+                    Fire();
+                }
+
+                break;
         }
     }
 
@@ -65,5 +89,10 @@ public class PlayerAttack : MonoBehaviour
         yield return new WaitForSeconds(revolverData.FireRate);
         fireFromLeft = !fireFromLeft;
         canFire = true;
+    }
+
+    private void SceneState(int state) 
+    { 
+        sceneState = state; 
     }
 }

@@ -100,7 +100,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  molotavData: {fileID: 0}
+  molotavData: {fileID: 11400000, guid: ceb352b8aad0652478c1c3e2e0e01e5c, type: 2}
   damagableLayerMask:
     serializedVersion: 2
     m_Bits: 0
