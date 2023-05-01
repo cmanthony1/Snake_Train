@@ -58,4 +58,17 @@ public class ConversationStarter : MonoBehaviour
     {
         startTrigger.OnUse();
     }
+    public void StateActive()
+    {
+        Invoke("StateActiveSet", 2f);
+    }
+    public void StateIdle()
+    {
+        CombatStateManager.current.SetState(CombatStateManager.SceneState.Friendly);
+    }
+
+    private void StateActiveSet()
+    {
+        CombatStateManager.current.SetState(CombatStateManager.SceneState.Hostile);
+    }
 }

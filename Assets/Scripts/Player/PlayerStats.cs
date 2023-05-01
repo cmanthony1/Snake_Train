@@ -62,7 +62,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
              * Calls death function when health is 0.
              * Subscription: ConversationStarter.
              */
-            //OnDeathPlayer.Invoke();
+            OnDeathPlayer?.Invoke();
             Destroy(gameObject);
         }
     }
