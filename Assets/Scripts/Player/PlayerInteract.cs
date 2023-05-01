@@ -6,25 +6,31 @@ using UnityEngine;
 public class PlayerInteract : MonoBehaviour
 {
     [Header("Prompt Object")]
-    [SerializeField] private GameObject promptObj;
+    [SerializeField] private GameObject _promptObj;
 
-    public static Action OnInteraction;
+    public static Action<GameObject> OnInteraction;
 
     private Animator promptAnimator;
+    private TransitionController _controller;
     private bool canInteract;
 
     private void Awake()
     {
-        promptAnimator = promptObj.GetComponent<Animator>();
+        promptAnimator = _promptObj.GetComponent<Animator>();
     }
 
-    public void Update()
+    private void Update()
     {
         if (canInteract)
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
-                OnInteraction?.Invoke();
+                /*
+                 * Calls all functions subscribed to this event.
+                 * Subscription: SceneController.
+                 */
+                CombatStateManager.current.SetState(CombatStateManager.SceneState.Transition);
+                _controller.LoadNextScene(gameObject);
             }
         }
     }
@@ -36,10 +42,16 @@ public class PlayerInteract : MonoBehaviour
         canInteract = promptAnimator.GetBool("Prompt");
     }
 
-    /* Gets the Prompt Object active state and sets active state. */
+    /* Getter/Setter */
     public bool PromptState
     {
-        get { return promptObj.activeInHierarchy; }
-        set { promptObj.SetActive(value); }
+        get { return _promptObj.activeInHierarchy; }
+        set { _promptObj.SetActive(value); }
+    }
+
+    public TransitionController Controller
+    {
+        get { return _controller; }
+        set { _controller = value; }
     }
 }

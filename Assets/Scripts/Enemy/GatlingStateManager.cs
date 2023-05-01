@@ -21,8 +21,8 @@ public class GatlingStateManager : MonoBehaviour
     private bool isPlayerDetected;
     private bool canFire = true;
     private float drumCapacity;
-    private float reloadSpeed;
 
+    private int sceneState;
     private GatlingState currentState;
 
     public enum GatlingState
@@ -40,12 +40,14 @@ public class GatlingStateManager : MonoBehaviour
      */
     private void OnEnable()
     {
+        CombatStateManager.SendSceneState += SceneState;
         PlayerStats.OnDeathPlayer += PlayerDead;
     }
 
     /* Unsubscribes from the OnDeathPlayer event in the PlayerStats script (if destroyed). */
     private void OnDisable()
     {
+        CombatStateManager.SendSceneState += SceneState;
         PlayerStats.OnDeathPlayer -= PlayerDead;
     }
 
@@ -58,12 +60,12 @@ public class GatlingStateManager : MonoBehaviour
         playerTransform = GameObject.Find("Player").GetComponent<Transform>();
         firePointTransform = transform.Find("Gatling (Pivot)/FirePoint").GetComponent<Transform>();
         drumCapacity = gatlingData.Capacity;
-        reloadSpeed = gatlingData.ReloadSpeed;
 
         /* Sets current state of object. */
         currentState = GatlingState.Scanning;
     }
 
+    /* Gatling Finite State Machine. Controlled by CombatStateManager. */
     private void Update()
     {
         if (playerTransform != null)
@@ -71,38 +73,41 @@ public class GatlingStateManager : MonoBehaviour
             directionToPlayer = (playerTransform.position - gatlingTransform.position).normalized;
             Scan();
             AimWeapon();
-        
 
-            switch (currentState)
+            if (sceneState == 2)
             {
-                case GatlingState.Scanning:
+                switch (currentState)
+                {
+                    case GatlingState.Scanning:
 
-                    currentState = (isPlayerDetected) ? GatlingState.Firing : GatlingState.Scanning;
-                    break;
+                        currentState = (isPlayerDetected) ? GatlingState.Firing : GatlingState.Scanning;
+                        break;
 
-                case GatlingState.Firing:
+                    case GatlingState.Firing:
 
-                    Firing();
-                    break;
+                        Firing();
+                        break;
 
-                case GatlingState.Inspecting:
+                    case GatlingState.Inspecting:
 
-                    currentState = (drumCapacity < gatlingData.Capacity) ? GatlingState.Reloading : GatlingState.Scanning;
-                    break;
+                        currentState = (drumCapacity != 0) ? GatlingState.Scanning : GatlingState.Reloading;
+                        break;
 
-                case GatlingState.Reloading:
+                    case GatlingState.Reloading:
 
-                    StartCoroutine(Reload());
-                    break;
+                        StartCoroutine(Reload());
+                        break;
 
-                case GatlingState.Throwing:
+                    case GatlingState.Throwing:
 
-                    ThrowMolotov();
-                    break;
+                        ThrowMolotov();
+                        break;
+                }
             }
         }
     }
 
+    /* Player Detection. */
     private void Scan()
     {
         if (Vector2.Distance(playerTransform.position, gatlingTransform.position) < detectionRadius)
@@ -116,6 +121,7 @@ public class GatlingStateManager : MonoBehaviour
         }
     }
 
+    /* Weapon Aiming and Sprite Control */
     private void AimWeapon()
     {
         /* Calculates the angle between two points. */
@@ -158,12 +164,23 @@ public class GatlingStateManager : MonoBehaviour
         }
     }
 
-    private void PlayerDead()
-    {
-        isPlayerDetected = false;
+    /* Getter/Setter */
+    private void PlayerDead()  
+    { 
+        isPlayerDetected = false; 
     }
 
-    /* GATLING STATES */
+    private void SceneState(int state) 
+    { 
+        sceneState = state; 
+    }
+
+    /* ---------------------- GATLING STATES ---------------------- */
+
+    /* 
+     * Uses Object Pooler Design Pattern to enable and disable bullet objects. 
+     * Gets bullet object from pooler, sets position, rotation, and force to rigidbody.
+     */
     private void Firing()
     {
         if (!isPlayerDetected)
@@ -207,21 +224,27 @@ public class GatlingStateManager : MonoBehaviour
         canFire = true;
     }
 
+    /* Reload Control. */
     private IEnumerator Reload()
     {
-        yield return new WaitForSeconds(reloadSpeed);
+        yield return new WaitForSeconds(gatlingData.ReloadSpeed);
         drumCapacity = gatlingData.Capacity;
         currentState = GatlingState.Scanning;
     }
 
+    /* Molotov Control 
+     * 
+     * Uses Object Pooler Design Pattern to enable and disable bullet objects. 
+     * Gets moolotov object from pooler, sets start position, end position, rotation.
+     */
     private void ThrowMolotov()
     {
         GameObject throwable = MolotovPooler.current.GetPooledObject();
 
         if (throwable != null)
         {
-            throwable.GetComponent<ThrowableController>().StartPosition = transform.position;
-            throwable.GetComponent<ThrowableController>().EndPosition = lastPlayerPosition;
+            throwable.GetComponent<MolotovController>().StartPosition = transform.position;
+            throwable.GetComponent<MolotovController>().EndPosition = lastPlayerPosition;
             throwable.transform.rotation = Quaternion.identity;
             throwable.transform.localScale = gatlingTransform.localScale;
             throwable.SetActive(true);

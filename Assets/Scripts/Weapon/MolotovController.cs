@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ThrowableController : MonoBehaviour
+public class MolotovController : MonoBehaviour
 {
     [SerializeField] private AnimationCurve curve;
     [SerializeField] private ThrowableData molotavData;
@@ -11,7 +11,6 @@ public class ThrowableController : MonoBehaviour
     private Animator molotovAnimator;
     private Vector2 _startPosition;
     private Vector2 _endPosition;
-    private Vector2 originalStartPos;
     private float travelSpeed;
     private float distance;
     private float maxHeight;
@@ -25,7 +24,6 @@ public class ThrowableController : MonoBehaviour
 
     private void OnEnable()
     {
-        originalStartPos = transform.position;
         distance = Vector2.Distance(_startPosition, _endPosition);
         maxHeight = distance / 2;
 

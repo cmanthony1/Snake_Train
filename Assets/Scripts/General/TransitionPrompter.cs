@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PromptTransition : MonoBehaviour
+public class TransitionPrompter : MonoBehaviour
 {
+    [SerializeField] private TransitionController transitionController;
     private SpriteRenderer arrowSprend;
     private bool canOpen;
 
@@ -15,21 +16,21 @@ public class PromptTransition : MonoBehaviour
     }
 
     /*
-     * Subscribes to the OnInteraction event in the PlayerMovement script.
+     * Subscribes to the CurrentStateState event in the CombatStateManager script.
      * Invokes: Open()
      */
     private void OnEnable()
     {
-        EnemyHandler.OnEnemiesDefeated += Open;
+        CombatStateManager.SendSceneState += Open;
     }
 
-    /* Unsubscribes from the OnEnemiesDefeated event in the EnemyHandler script (if destroyed). */
+    /* Unsubscribes from the CurrentStateState event in the CombatStateManager script (if destroyed). */
     private void OnDisable()
     {
-        EnemyHandler.OnEnemiesDefeated -= Open;
+        CombatStateManager.SendSceneState -= Open;
     }
 
-    /* Enables prompt and sends data to enable interaction. */
+    /* Enables prompt, sends data to enable interaction, and sends object's instance of TransitionController. */
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -37,10 +38,11 @@ public class PromptTransition : MonoBehaviour
             PlayerInteract player = collision.gameObject.GetComponent<PlayerInteract>();
             player.PromptState = true;
             player.Prompt(canOpen);
+            player.Controller = transitionController;
         }
     }
 
-    /* Disables prompt and sends data to enable interaction. */
+    /* Disables prompt and sends data to disable interaction. */
     public void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -52,10 +54,18 @@ public class PromptTransition : MonoBehaviour
     }
 
     /* Enables player to interact with transition and sets color of the Arrow Sprite to green. */
-    private void Open()
+    private void Open(int state)
     {
-        canOpen = true;
-        arrowSprend.color = ColorUtility.TryParseHtmlString("#00A619", out Color color) ? color : arrowSprend.color;
+        if (state != 2)
+        {
+            canOpen = true;
+            arrowSprend.color = ColorUtility.TryParseHtmlString("#00A619", out Color green) ? green : arrowSprend.color;
+        }
+        else
+        {
+            canOpen = false;
+            arrowSprend.color = ColorUtility.TryParseHtmlString("#DB0600", out Color red) ? red : arrowSprend.color;
+        }
     }
 
     /* Gizmos for visibility. */

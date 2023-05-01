@@ -22,19 +22,12 @@ public class PlayerStats : MonoBehaviour, IDamageable
         textOriginTransform = transform.Find("FloatingTextOrigin").GetComponent<Transform>();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(20);
-        }
-    }
-
     /* Adds the value to health and invokes OnHealPlayer event that the value to its own UI element. */
     public void Heal(float value)
     {
         health += value;
 
+        /* Checks if the health is over the max health of the agent. */
         if (health > playerData.MaxHealth)
         {
             health = playerData.MaxHealth;

@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     /* Core Player Data */
     private Rigidbody2D playerRigidBody;
     private Transform playerSpriteTransform;
+    private int sceneState;
 
     /* Weapon Data */
     private Transform weaponTransform;
@@ -20,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private float speed;
     private float xPlayerScale;
     private float yWeaponScale;
+    private string _CapturedDirection;
 
     /* Dash Properties */
     private bool canDash = true;
@@ -34,6 +36,21 @@ public class PlayerMovement : MonoBehaviour
         weaponTransform = transform.Find("Revolver (Pivot)").GetComponent<Transform>();
     }
 
+    /*
+     * Subscribes to the SendSceneState event in the CombatStateManager script.
+     * Invokes: SceneState().
+     */
+    private void OnEnable()
+    {
+        CombatStateManager.SendSceneState += SceneState;
+    }
+
+    /* Unsubscribes from the SendSceneState event in the CombatStateManager script (if destroyed). */
+    private void OnDisable()
+    {
+        CombatStateManager.SendSceneState += SceneState;
+    }
+
     private void Start()
     {
         speed = playerData.MoveSpeed;
@@ -41,10 +58,40 @@ public class PlayerMovement : MonoBehaviour
         yWeaponScale = weaponTransform.localScale.y;
     }
 
+    /* Process User Input. Controlled by CombatStateManager. */
     private void Update()
     {
-        ProcessInputs();
-        AimWeapon();
+        switch (sceneState)
+        {
+            case 0:
+            case 1:
+            case 2:
+
+                ProcessInputs();
+                AimWeapon();
+                break;
+
+            case 3:
+
+                if (CapturedDirection == "Left")
+                {
+                    playerSpriteTransform.localScale = new Vector3(-xPlayerScale, playerSpriteTransform.localScale.y, playerSpriteTransform.localScale.z);
+                    weaponTransform.localScale = new Vector3(weaponTransform.localScale.x, -yWeaponScale, weaponTransform.localScale.z);
+                    float currentRotation = weaponTransform.rotation.eulerAngles.z;
+                    float newRotation = Mathf.MoveTowardsAngle(currentRotation, -180f, 500f * Time.deltaTime);
+                    weaponTransform.rotation = Quaternion.Euler(0f, 0f, newRotation);
+                }
+                else
+                {
+                    playerSpriteTransform.localScale = new Vector3(xPlayerScale, playerSpriteTransform.localScale.y, playerSpriteTransform.localScale.z);
+                    weaponTransform.localScale = new Vector3(weaponTransform.localScale.x, yWeaponScale, weaponTransform.localScale.z);
+                    float currentRotation = weaponTransform.rotation.eulerAngles.z;
+                    float newRotation = Mathf.MoveTowardsAngle(currentRotation, 0, 500f * Time.deltaTime);
+                    weaponTransform.rotation = Quaternion.Euler(0f, 0f, newRotation);
+                }
+
+                break;
+        } 
     }
 
     private void FixedUpdate()
@@ -68,12 +115,21 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    /* Player Movement. */
+    /* Player Movement. Controlled by CombatStateManager. */
     private void Move()
     {        
-        if (!isDashing)
+        switch (sceneState)
         {
-            playerRigidBody.velocity = movement.normalized * (speed * 100) * Time.deltaTime;
+            case 0:
+            case 1:
+            case 2:
+
+                if (!isDashing)
+                {
+                    playerRigidBody.velocity = movement.normalized * (speed * 100) * Time.deltaTime;
+                }
+
+                break;
         }
     }
 
@@ -111,5 +167,17 @@ public class PlayerMovement : MonoBehaviour
         isDashing = false;
         yield return new WaitForSeconds(playerData.DashCooldown);
         canDash = true;
+    }
+
+    /* Getter/Setter */
+    private void SceneState(int state)
+    {
+        sceneState = state;
+    }
+    
+    public string CapturedDirection
+    {
+        get { return _CapturedDirection; }
+        set { _CapturedDirection = value; }
     }
 }

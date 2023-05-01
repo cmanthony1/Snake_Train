@@ -3,14 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using Random = UnityEngine.Random;
 
 public class EnemyStats : MonoBehaviour, IDamageable
 {
     [Header("Agent Data")]
     [SerializeField] private AgentData enemyData;
 
-    public static Action OnCreate;
+    public static Action OnSpawn;
     public static Action OnDestroy;
 
     private GameObject enemyHealthBarObj;
@@ -31,7 +30,7 @@ public class EnemyStats : MonoBehaviour, IDamageable
         * Calls all functions subscribed to this event.
         * Subscription: EnemyHandler.
         */
-        OnCreate?.Invoke();
+        OnSpawn?.Invoke();
     }
 
     /* Subtracts the damage from health and calls a function that sends the remaining health to its own UI element. */
@@ -39,16 +38,11 @@ public class EnemyStats : MonoBehaviour, IDamageable
     {
         health -= value;
 
-        /* Checks if the health is over the max health of the agent. */
-        if (health > enemyData.MaxHealth)
-        {
-            health = enemyData.MaxHealth;
-        }
-
         /* Sets the enemy health bar to active once it recieves damage. */
         if (health != enemyData.MaxHealth)
         {
             enemyHealthBarObj.SetActive(true);
+            CombatStateManager.current.SetState(CombatStateManager.SceneState.Hostile);
         }
 
         ShowValue(value);
