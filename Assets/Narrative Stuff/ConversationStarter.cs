@@ -24,7 +24,6 @@ public class ConversationStarter : MonoBehaviour
         //CombatStateManager.OnEnemiesDefeated += EnemyStateReset;
         PlayerStats.OnDamagePlayer += PlayerDamaged;
         PlayerStats.OnDeathPlayer += PlayerDeath;
-        DialogueManager.instance.WarmUpConversationController();
         Invoke("StartConvo", 0.9f);
     }
     private void OnDisable()
