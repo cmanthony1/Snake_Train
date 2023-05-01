@@ -15,51 +15,70 @@ public class ShopController : MonoBehaviour
     public PlayerInventory inv;
     public PlayerStats stats;
 
+    [SerializeField] ShopTrigger trig;
+
     private void Start()
     {
         inv = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
         stats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+        trig.Clear();
     }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            BackToCar();
+        }
+    }
+
 
     //restores player's health - either a set increment or up to the max
     public void RestoreHealth()
     {
         //for now, fully healing based on current max health
         stats.Heal(100);
+        inv.Coins -= 15;
         UpdateMenu();
     }
 
     //increases the player's max health
     public void IncreaseMaxHealth()
     {
+        inv.Coins -= 30;
         UpdateMenu();
     }
 
     //closes the shop menu
     public void BackToCar()
     {
+        Debug.Log("shop exit");
         gameObject.SetActive(false);
+        trig.on = true;
     }
 
     //updates the shop menu
     public void UpdateMenu()
     {
+        
+        Debug.Log(inv.Coins);
+        
         //update shop option availability
         if (inv.Coins < 15 || stats.health>=100)//Not sure how to access max health, but that's the second check
         {
             increaseButton.interactable = false;
             increaseButton.GetComponent<Image>().color = Color.grey;
 
-        } else if (inv.Coins < 30)// ADD OR FROM PLAYER MAXHEALTH == CAP
+        }
+
+        if (inv.Coins < 30)// ADD OR FROM PLAYER MAXHEALTH == CAP
         {
-            restoreButton.interactable = false;
             increaseButton.interactable = false;
-            restoreButton.GetComponent<Image>().color = Color.grey;
             increaseButton.GetComponent<Image>().color = Color.grey;
         }
 
         //update information displayed
-        moneyDisplay.text = "Money: " + inv.Coins.ToString();
+        moneyDisplay.text = "Money: " + inv.Coins;
 
         //ADD UPDATE BASED ON PLAYER HEALTH
     }
