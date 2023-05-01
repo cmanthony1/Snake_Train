@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Omar_Test_Transition.unity
     guid: aa6507018d064f64d95abd79bf5a7f8b
+  - enabled: 1
+    path: Assets/Scenes/DialogueManagerTestScene.unity
+    guid: acd1c5fe846d0fd488896d207972ff40
   m_configObjects: {}

@@ -1496,12 +1496,12 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 1019.714
+        x: 1017.98987
         y: 543.5861
         width: 160
         height: 30
     entryGroups: []
-    canvasScrollPosition: {x: 299.99988, y: 12.068909}
+    canvasScrollPosition: {x: 70.6897, y: 0}
     canvasZoom: 0.58000034
   - id: 2
     fields:
@@ -1608,8 +1608,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 20
+        y: 54
         width: 160
         height: 30
     - id: 1
@@ -1655,7 +1655,7 @@ MonoBehaviour:
       isGroup: 1
       nodeColor: 
       delaySimStatus: 0
-      falseConditionAction: 
+      falseConditionAction: Block
       conditionPriority: 2
       outgoingLinks: []
       conditionsString: 
@@ -1665,8 +1665,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 20
+        y: 108
         width: 160
         height: 30
     entryGroups: []

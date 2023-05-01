@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PixelCrushers.DialogueSystem;
 
 public class CombatStateManager : MonoBehaviour
 {
@@ -99,6 +100,7 @@ public class CombatStateManager : MonoBehaviour
         if (enemyCounter <= 0)
         {
             _currentSceneState = initialState;
+            ConversationStarter.current.EnemyStateReset();
             SetState(_currentSceneState);
         }
     }

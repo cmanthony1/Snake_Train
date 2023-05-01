@@ -12,6 +12,11 @@ public class ConversationStarter : MonoBehaviour
     [SerializeField] private GameObject deathCanvas;
     [SerializeField] private DialogueSystemTrigger playerDeathTrigger;
     [SerializeField] private DialogueSystemTrigger startTrigger;
+    public static ConversationStarter current;
+    private void Start()
+    {
+        current = this;
+    }
     private void OnEnable()
     {
         deathCanvas.SetActive(false);
@@ -34,7 +39,7 @@ public class ConversationStarter : MonoBehaviour
     * Allows for restarting the same car without retriggering dialogue in cases of death or checkpoints, so long as OnEnemiesDefeated is not called.
     * Manually set what starting convo to have, if any, in DialogueTrigger/StartConversationTrigger prefab. Attach prefab to all scenes that have opening dialogue.
     */
-    private void EnemyStateReset()
+    public void EnemyStateReset()
     {
         DialogueLua.SetVariable("CombatState.CombatStart", false);
         DialogueLua.SetVariable("CombatState.CombatActive", false);
@@ -58,17 +63,5 @@ public class ConversationStarter : MonoBehaviour
     {
         startTrigger.OnUse();
     }
-    public void StateActive()
-    {
-        Invoke("StateActiveSet", 2f);
-    }
-    public void StateIdle()
-    {
-        CombatStateManager.current.SetState(CombatStateManager.SceneState.Friendly);
-    }
 
-    private void StateActiveSet()
-    {
-        CombatStateManager.current.SetState(CombatStateManager.SceneState.Hostile);
-    }
 }

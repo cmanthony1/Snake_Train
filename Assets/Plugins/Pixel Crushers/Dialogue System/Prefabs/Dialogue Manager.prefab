@@ -59,7 +59,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 30
   m_TargetDisplay: 0
 --- !u!114 &11426068
 MonoBehaviour:
@@ -114,6 +114,7 @@ GameObject:
   - component: {fileID: 11471062}
   - component: {fileID: 11424616}
   - component: {fileID: 523274735}
+  - component: {fileID: 1498871999}
   m_Layer: 0
   m_Name: Dialogue Manager
   m_TagString: Untagged
@@ -248,12 +249,12 @@ MonoBehaviour:
   interruptActiveConversations: 0
   includeSimStatus: 0
   instantiateDatabase: 0
-  preloadResources: 1
-  warmUpConversationController: 0
+  preloadResources: 0
+  warmUpConversationController: 2
   dontHideImmediateDuringWarmup: 0
-  dontDestroyOnLoad: 1
+  dontDestroyOnLoad: 0
   allowOnlyOneInstance: 1
-  onStartTriggerWaitForSaveDataApplied: 0
+  onStartTriggerWaitForSaveDataApplied: 1
   dialogueTimeMode: 0
   debugLevel: 3
 --- !u!114 &11471062
@@ -304,7 +305,7 @@ MonoBehaviour:
   backButtons:
   - Cancel
   submitButton: Submit
-  singleton: 1
+  singleton: 0
   onUseKeyboard:
     m_PersistentCalls:
       m_Calls: []
@@ -345,22 +346,10 @@ MonoBehaviour:
             m_StringArgument: ShowDP
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-          m_MethodName: set_enabled
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
+        - m_Target: {fileID: 1498871999}
+          m_TargetAssemblyTypeName: CombatStateUpdater, Assembly-CSharp
+          m_MethodName: StateIdle
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -372,10 +361,10 @@ MonoBehaviour:
     onConversationEnd:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-          m_MethodName: set_enabled
-          m_Mode: 6
+        - m_Target: {fileID: 1498871999}
+          m_TargetAssemblyTypeName: CombatStateUpdater, Assembly-CSharp
+          m_MethodName: StateActive
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -384,19 +373,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-    runOnConversationEndEventsAtEndOfFrame: 0
+    runOnConversationEndEventsAtEndOfFrame: 1
     onConversationCancelled:
       m_PersistentCalls:
         m_Calls: []
@@ -455,6 +432,18 @@ MonoBehaviour:
     onDialogueSystemUnpause:
       m_PersistentCalls:
         m_Calls: []
+--- !u!114 &1498871999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d0f1ac15526d364d8427270821ccf27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &305259067
 GameObject:
   m_ObjectHideFlags: 0
@@ -3385,7 +3374,7 @@ MonoBehaviour:
   hideAnimationTrigger: HideDP
   startState: 0
   waitForShowAnimationToSetOpen: 1
-  m_deactivateOnHidden: 0
+  m_deactivateOnHidden: 1
   onOpen:
     m_PersistentCalls:
       m_Calls: []
